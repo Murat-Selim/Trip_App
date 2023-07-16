@@ -1,5 +1,20 @@
+use std::io;
+
 fn main() {
-    let new_trip = Trip::new(1, "Istanbul".to_string(), "2023-07-01".to_string(), "2023-07-31".to_string());
+    let mut id = String::new();
+    io::stdin().read_line(&mut id).expect("failed to read");
+    let id: i32 = id.trim().parse().expect("failed to convert");
+
+    let mut destination = String::new();
+    io::stdin().read_line(&mut destination).expect("failed to read");
+
+    let mut start_date = String::new();
+    io::stdin().read_line(&mut start_date).expect("failed to read");
+
+    let mut end_date = String::new();
+    io::stdin().read_line(&mut end_date).expect("failed to read");
+    
+    let new_trip = Trip::new(id, destination, start_date, end_date);
     let trip_ref = &new_trip;
 
     println!("Trip to {}:", trip_ref.destination);
